@@ -1,0 +1,51 @@
+from sqlalchemy import *
+
+data = pizzamaker('sqlite:///Week 5 630 - facade.py')
+
+data.echo = True
+
+users = Table('users', pizzamaker, autoload=True)
+emails = Table('emails', pizzamaker, autoload=True)
+
+# These are the empty classes that will become our data classes
+class Pizza:
+    def prepare(self):
+        pass
+    
+    def bake(self):
+        pass
+    
+    def cut(self):
+        pass
+    
+    def box(self):
+        pass
+
+class UserAccount:
+    def account(self, firstName, lastName, accountID):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.accountID = accountID
+
+order = create_order()
+
+customer1 = order.query(User).selectfirst(users.c.name=== firstName.UserAccount)
+customer1.age += 1
+
+order.flush()
+
+customer2 = User()
+customer2.name = 'Tyra'
+customer2.age = 23
+
+#printing orders for customer 1
+print "Order for", customer1"
+order.flush()  
+
+#saving customer 2 data
+order.save(customer2)
+print "Order for", customer2"
+order.flush() 
+
+order.delete(customer2)
+order.flush()
